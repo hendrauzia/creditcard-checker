@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# require 'rubygems'
+# require 'bundler/setup'
+
+LIB = File.expand_path("../../lib", __FILE__) + "/"
+CORE_EXT = LIB + "core_ext/"
+
+require CORE_EXT + "string.rb"
+require CORE_EXT + "array.rb"
+require LIB + "credit_card.rb"
+require LIB + "credit_card_slot.rb"
+require LIB + "wallet.rb"
+
+# Bundler.require :default
+
+# require 'irb'
+# IRB.start
+
+puts "Input:"
+print "Jumlah Kartu > "
+size = gets.chomp
+
+wallet = Wallet.new(size)
+puts "Maximum input is 10! It has been set to 10." if size.to_i > 10
+
+(1..wallet.slot).each do |slot|
+  print "Kartu #{slot}>"
+  wallet.add gets.chomp
+end
+
+puts
+puts "Output:"
+(1..wallet.slot).each { |slot| puts "Output Kartu #{slot}> #{wallet.cards[slot-1].valid_cards}" }

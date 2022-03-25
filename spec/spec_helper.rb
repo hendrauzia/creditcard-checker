@@ -1,0 +1,5 @@
+require_relative '../lib/core_ext/array.rb'
+require_relative '../lib/core_ext/string.rb'
+require_relative '../lib/credit_card.rb'
+require_relative '../lib/credit_card_slot.rb'
+require_relative '../lib/wallet.rb'

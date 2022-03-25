@@ -1,0 +1,76 @@
+At a Glance
+=========
+
+Check if a specified number is a valid credit card number using Luhn Algorithm.
+
+Requirements
+=========
+
+This project is built on top of and requires:
+
+* mac and unix-like systems are welcome (sorry, hasn't been tested on windows)
+* ruby 2.1.0
+
+Installation
+=========
+
+To install this application, run using the following statements:
+
+    cd ./creditcard-checker
+    bundle install
+
+Test
+==========
+
+To check if the application working as expected, please run the following test:
+
+    rspec spec
+
+Usage
+==========
+
+To use this application, run using the following statements:
+
+    ./bin/creditcard-checker
+
+Descriptions
+==========
+
+Inputs will be several amounts of cards in T line (maximum of 10), then followed
+by numbers of each card per line, therefore there will be T lines input follows.
+Every card number will have exactly 16 digits, where valid characthers are 0-9
+and question mark (?).
+
+Question mark (?) can show up wherever it may be between those 16 digits, and
+every (?) character, must be replaced with 1 digits between 0-9. The amount of
+question mark per lines between 1 to 4.
+
+```shell
+Input:
+Jumlah Kartu > 2
+Kartu 1> 4111-1111-1111-1111
+Kartu 2> 4111-1111-1111-11?2
+
+Output:
+Output Kartu 1> 1
+Output Kartu 2> 1
+```
+
+Explanation of Input/Output:
+```shell
+4111-1111-1111-1111 only produce 4111-1111-1111-1111 and this is valid credit
+card according to Luhn Algorithm, therefore the output is 1.
+4111-1111-1111-11?2 will produce:
+4111-1111-1111-1102 (invalid luhn)
+4111-1111-1111-1112 (invalid luhn)
+4111-1111-1111-1122 (invalid luhn)
+4111-1111-1111-1132 (invalid luhn)
+4111-1111-1111-1142 (invalid luhn)
+4111-1111-1111-1152 (valid luhn)
+4111-1111-1111-1162 (invalid luhn)
+4111-1111-1111-1172 (invalid luhn)
+4111-1111-1111-1182 (invalid luhn)
+4111-1111-1111-1192 (invalid luhn)
+Only 4111-1111-1111-1152 is valid according to Luhn Algorithm, therefore the
+output is 1
+```
